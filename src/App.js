@@ -3,9 +3,10 @@ import Post from "./Post";
 import Modal from "@material-ui/core/Modal";
 import "./App.css";
 import { db, auth } from "./firebase";
-import { makeStyles, Button, Input } from "@material-ui/core";
+import { makeStyles, Button, Input, Avatar } from "@material-ui/core";
 import ImageUpload from "./ImageUpload";
 import InstagramEmbed from "react-instagram-embed";
+import { Link } from "react-router-dom";
 
 function getModalStyle() {
   const top = 50;
@@ -39,6 +40,8 @@ function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
+	const [searchValue, setSearchValue] = useState('');
+	const [searchUsers, setSearchUsers] = useState([]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -68,12 +71,22 @@ function App() {
       });
   }, []);
 
+	const writeUserData = (user) => {
+    db.collection('users').add(user);
+	}
+
   const signUp = (event) => {
     event.preventDefault();
 
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
+				const user = {
+					email,
+					username,
+					uid: authUser.user.uid,
+				}
+				writeUserData(user);
         return authUser.user.updateProfile({
           displayName: username,
         });
@@ -91,6 +104,17 @@ function App() {
 
     setOpenSignIn(false);
   };
+
+	useEffect(() => {
+		if (searchValue !== '') {
+			db.collection('users').get().then(snapshots => {
+				setSearchUsers(snapshots.docs.filter(doc => doc.data().username.includes(searchValue)).map(doc => doc.data()));
+			})
+		} else {
+			setSearchUsers([]);
+		}
+	}, [searchValue]);
+
   return (
     <div className="app">
       <Modal open={open} onClose={() => setOpen(false)}>
@@ -164,8 +188,19 @@ function App() {
           height="40px"
           alt=""
         />
-        {user ? (
+        {user && <div>
+					<input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+					{searchUsers.map(searchUser => <Link to={`/${searchUser.uid}`}><div>{searchUser.username}</div></Link>)}
+				</div>}
+				{user ? (
           <div className="app__logoutContainer">
+            <Link to={`/${user.uid}`}>
+							<Avatar
+                className="post__avatar"
+                alt="RafehQazi"
+                src="/static/images/avatar/1.jpg"
+              />
+            </Link>
             <Button onClick={() => auth.signOut()}>Logout</Button>
           </div>
         ) : (

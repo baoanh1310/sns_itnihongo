@@ -12,13 +12,18 @@
   display: flex;
   justify-content: center;
 }
+
 .app__postsRight {
   margin-left: 20px;
 }
 
 .app__logoutContainer {
   margin-right: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
 }
+
 .app__loginContainer {
   margin-right: 20px;
   display: grid;
@@ -37,6 +42,101 @@
   justify-content: space-between;
   align-items: center;
 }
+
+/* position sticky -> fixed */
+.app__header-2 {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background-color: #fff;
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 81px;
+}
+
+/* Search field */
+.app__search {
+  position: relative;
+  height: 28px;
+}
+
+.app_delete-icon, .app__search-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 6px;
+  opacity: 0.5;
+}
+
+.app_delete-icon:hover {
+  cursor: pointer;
+}
+
+.app__search-field {
+  outline: none;
+  border-radius: 2px;
+  background-color: #FAFAFA;
+  border: 1px solid gray;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+.app__search-field:focus {
+  background-color: #FAFAFA;
+}
+
+.app__search-link {
+  text-decoration: none;
+}
+
+.app__search-result {
+  position: absolute;
+  top: 50px;
+  left: -35px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08);
+  min-width: 253px;
+  display: none;
+}
+
+.app__search-result.active {
+  display: block;
+}
+
+.app__search-result::before {
+  content: "";
+  display: block;
+  border-width: 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent transparent;
+  position: absolute;
+  left: 46%;
+  top: -8px;
+  box-shadow: -2px -2px 2px 0 rgba(0, 0, 0, 0.1);
+  transform: rotate(45deg);
+}
+
+.app__search-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.app__search-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: background-color .3s ease;
+}
+
+.app__search-name {
+  color: #333;
+  margin-left: 16px;
+}
+
+/* End search */
 
 .app__headerImage {
   background-color: #fff;

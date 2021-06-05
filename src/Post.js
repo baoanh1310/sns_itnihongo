@@ -77,7 +77,7 @@ function Post({ postId, username, caption, imageUrl, user }) {
 
       <div className="post__comments">
         {comments.map(({ id, comment }) => (
-          <div className="post__comment">
+          <div className="post__comment" key={id} >
             {comment.username === user?.displayName ? (
               <button
                 className="post__deleteComment"
