@@ -1,23 +1,29 @@
 import React from 'react';
 import Post from '../../Post';
+import './Profile.css'
 
 
 const UserPost = ({ posts, user }) => {
+    const userPosts = posts.length ? posts.map(({ id, post }) => {
+        return (
+            <div key={id} className="profile__userpost-item">
+                <a href="#" className="profile__userpost-link">
+                    <img className="profile__userpost-image" src={post.imageUrl} alt="" />
+                </a>
+                <div className="profile__userpost-icons">
+                    <i className="profile__userpost-icon fas fa-heart" />
+                    <span>40</span>
+                    <i className="profile__userpost-icon fas fa-comment" />
+                    <span>23</span>
+                </div>
+            </div>
+        )
+    }) : null
     return (
-        // <div className="userpost-item">
-        //     <img className="userpost-image" src={post.imageUrl} alt="" />
-        // </div>
-        <div>
-            {posts.length > 0 ? posts.map(({ id, post }) => (
-                <Post
-                    key={id}
-                    username={post.username}
-                    caption={post.caption}
-                    imageUrl={post.imageUrl}
-                    postId={id}
-                    user={user}
-                />
-            )) : <p>Không có bài viết</p>}
+        <div className="profile__post-grid">
+            <div className="profile__post-content">
+                {userPosts}
+            </div>
         </div>
     );
 };

@@ -98,7 +98,19 @@
   border-radius: 6px;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08);
   min-width: 253px;
+  transform-origin: top;
+  animation: searchGrow ease .2s;
   display: none;
+  will-change: opacity,transform;
+}
+
+@keyframes searchGrow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .app__search-result.active {
