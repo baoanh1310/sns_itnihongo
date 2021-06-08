@@ -44,6 +44,7 @@
 }
 
 /* position sticky -> fixed */
+
 .app__header-2 {
   position: fixed;
   top: 0;
@@ -58,6 +59,7 @@
 }
 
 /* Search field */
+
 .app__search {
   position: relative;
   height: 28px;
@@ -88,10 +90,6 @@
   background-color: #FAFAFA;
 }
 
-.app__search-link {
-  text-decoration: none;
-}
-
 .app__search-result {
   position: absolute;
   top: 50px;
@@ -100,7 +98,19 @@
   border-radius: 6px;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08);
   min-width: 253px;
+  transform-origin: top;
+  animation: searchGrow ease .2s;
   display: none;
+  will-change: opacity,transform;
+}
+
+@keyframes searchGrow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .app__search-result.active {
@@ -120,6 +130,10 @@
   transform: rotate(45deg);
 }
 
+.app__search-link {
+  text-decoration: none;
+}
+
 .app__search-item {
   display: flex;
   align-items: center;
@@ -131,9 +145,19 @@
   transition: background-color .3s ease;
 }
 
-.app__search-name {
+.app__search-info {
   color: #333;
   margin-left: 16px;
+  align-self: flex-start;
+  font-size: 14px;
+}
+
+.app__search-name {
+  font-weight: 600;
+}
+
+.app__search-email {
+  color: #8e8e8e;
 }
 
 /* End search */

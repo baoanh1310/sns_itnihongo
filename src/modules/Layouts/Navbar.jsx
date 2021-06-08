@@ -115,7 +115,10 @@ const Navbar = () => {
                                 alt="RafehQazi"
                                 src="/static/images/avatar/1.jpg"
                             />
-                            <div className="app__search-name">{searchUser.username}</div>
+                            <div className="app__search-info">
+                                <div className="app__search-name">{searchUser.username}</div>
+                                <div className="app__search-email">{searchUser.email}</div>
+                            </div>
                         </div></Link>)}
                     </div>
                 </div>}
