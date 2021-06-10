@@ -110,7 +110,7 @@ const Navbar = () => {
                     {searchValue !== "" ? <i className="app_delete-icon fas fa-times" onClick={event => setSearchValue("")} /> : <i className="app__search-icon fas fa-search" />}
                     <input className="app__search-field" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Tìm kiếm" />
                     <div className={`app__search-result ${searchUsers.length !== 0 ? "active" : ''}`}>
-                        {searchUsers.map(searchUser => <Link key={searchUser.uid} className="app__search-link" to={`/${searchUser.uid}`}><div className="app__search-item">
+                        {searchUsers.map(searchUser => <Link key={searchUser.uid} className="app__search-link" to={`/${searchUser.uid}`} onClick={(event => setSearchValue(''))}><div className="app__search-item">
                             <Avatar
                                 alt="RafehQazi"
                                 src="/static/images/avatar/1.jpg"

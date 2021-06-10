@@ -2,7 +2,6 @@ import { Avatar, Container } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import InstagramEmbed from 'react-instagram-embed';
 import { Redirect, useParams } from 'react-router';
-import Post from '../../Post';
 import { db } from "../../firebase";
 import UserPost from './UserPost';
 
@@ -50,7 +49,21 @@ function Profile() {
         <div className="app__posts">
           <div className="app_postsLeft">
             {posts.length > 0 ? (
-              <UserPost posts={posts} user={user} />
+              // <UserPost posts={posts} user={user} />
+              <div className="profile__post-grid">
+                <div className="profile__post-content">
+                  {posts.map(({ id, post }) => (
+                    <UserPost
+                      key={id}
+                      username={post.username}
+                      caption={post.caption}
+                      imageUrl={post.imageUrl}
+                      postId={id}
+                      user={user}
+                    />
+                  ))}
+                </div>
+              </div>
             ) : <p>Không có bài viết</p>}
           </div>
           <div className="app__postsLeft">
