@@ -55,7 +55,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 81px;
 }
 
 /* Search field */
@@ -164,7 +163,7 @@
 
 .app__headerImage {
   background-color: #fff;
-  padding: 20px;
+  margin: 20px;
   object-fit: contain;
 }
 

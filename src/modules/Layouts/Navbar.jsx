@@ -100,12 +100,12 @@ const Navbar = () => {
     return (
         <div>
             <div className="app__header-2">
-                <img
+                <Link to="/"><img
                     className="app__headerImage"
-                    src="https://lh3.googleusercontent.com/2sREY-8UpjmaLDCTztldQf6u2RGUtuyf6VT5iyX3z53JS4TdvfQlX-rNChXKgpBYMw"
+                    src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png"
                     height="40px"
                     alt=""
-                />
+                /></Link>
                 {user && <div className="app__search">
                     {searchValue !== "" ? <i className="app_delete-icon fas fa-times" onClick={event => setSearchValue("")} /> : <i className="app__search-icon fas fa-search" />}
                     <input className="app__search-field" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Tìm kiếm" />
@@ -171,7 +171,7 @@ const Navbar = () => {
                         />
                         <Button type="submit" onClick={signUp}>
                             Sign Up
-            </Button>
+                        </Button>
                     </form>
                 </div>
             </Modal>
@@ -200,7 +200,7 @@ const Navbar = () => {
                         />
                         <Button type="submit" onClick={signIn}>
                             Sign In
-            </Button>
+                        </Button>
                     </form>
                 </div>
             </Modal>

@@ -2,11 +2,13 @@
   width: 50%;
   margin: 1rem auto;
   display: block;
-  position: sticky;
-  top: 81px;
+  margin-top: 81px;
   z-index: 1;
   background-color: #fafafa;
   padding: 1rem;
+  /* border: 1px solid #333; */
+  border-radius: 5px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.4);
 }
 
 .imageupload__progress {

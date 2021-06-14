@@ -1,12 +1,12 @@
 .profile__post-grid {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 .profile__post-content {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
@@ -15,6 +15,7 @@
     max-height: 360px;
     position: relative;
     margin-bottom: 44px;
+    margin-right: calc(10% / 3);
 }
 
 .profile__userpost-link {

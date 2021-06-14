@@ -46,40 +46,35 @@ function Profile() {
       <p style={{ fontSize: 40 }}>{user.username}</p>
       <p>Email: {user.email}</p>
       <Container>
-        <div className="app__posts">
-          <div className="app_postsLeft">
-            {posts.length > 0 ? (
-              // <UserPost posts={posts} user={user} />
-              <div className="profile__post-grid">
-                <div className="profile__post-content">
-                  {posts.map(({ id, post }) => (
-                    <UserPost
-                      key={id}
-                      username={post.username}
-                      caption={post.caption}
-                      imageUrl={post.imageUrl}
-                      postId={id}
-                      user={user}
-                    />
-                  ))}
-                </div>
-              </div>
-            ) : <p>Không có bài viết</p>}
+        {posts.length > 0 ? (
+          <div className="profile__post-grid">
+            <div className="profile__post-content">
+              {posts.map(({ id, post }) => (
+                <UserPost
+                  key={id}
+                  username={post.username}
+                  caption={post.caption}
+                  imageUrl={post.imageUrl}
+                  postId={id}
+                  user={user}
+                />
+              ))}
+            </div>
           </div>
-          <div className="app__postsLeft">
-            <InstagramEmbed
-              url="https://www.instagram/p/B_uf9dmAGPw/"
-              maxWidth={320}
-              hideCaption={false}
-              containerTagName="div"
-              protocol=""
-              injectScript
-              onLoading={() => { }}
-              onSuccess={() => { }}
-              onAfterRender={() => { }}
-              onFailure={() => { }}
-            />
-          </div>
+        ) : <p>Không có bài viết</p>}
+        <div className="app__postsLeft">
+          <InstagramEmbed
+            url="https://www.instagram/p/B_uf9dmAGPw/"
+            maxWidth={320}
+            hideCaption={false}
+            containerTagName="div"
+            protocol=""
+            injectScript
+            onLoading={() => { }}
+            onSuccess={() => { }}
+            onAfterRender={() => { }}
+            onFailure={() => { }}
+          />
         </div>
       </Container>
     </div>

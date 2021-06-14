@@ -7,6 +7,7 @@ import { makeStyles, Button, Input, Avatar } from "@material-ui/core";
 import ImageUpload from "./ImageUpload";
 import InstagramEmbed from "react-instagram-embed";
 import { Link } from "react-router-dom";
+import Navbar from './modules/Layouts/Navbar';
 
 function getModalStyle() {
   const top = 50;
@@ -181,7 +182,7 @@ function App() {
           </form>
         </div>
       </Modal>
-      <div className="app__header">
+      {/* <div className="app__header">
         <img
           className="app__headerImage"
           src="https://lh3.googleusercontent.com/2sREY-8UpjmaLDCTztldQf6u2RGUtuyf6VT5iyX3z53JS4TdvfQlX-rNChXKgpBYMw"
@@ -209,7 +210,8 @@ function App() {
             <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
           </div>
         )}
-      </div>
+      </div> */}
+      <Navbar/>
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
       ) : (

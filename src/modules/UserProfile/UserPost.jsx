@@ -149,7 +149,7 @@ const UserPost = ({ postId, username, caption, imageUrl, user }) => {
                                         onClick={postComment}
                                     >
                                         Post
-          </button>
+                                    </button>
                                 </form>
                             )}
                         </div>
